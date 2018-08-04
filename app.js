@@ -2,9 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 
 // Dotenv config
 dotenv.config();
+
+// Database connection
+mongoose.connect(
+  process.env.MONGO_CONNECTION,
+  { useNewUrlParser: true }
+);
+mongoose.Promise = global.Promise;
 
 // Express Instance
 const app = express();
