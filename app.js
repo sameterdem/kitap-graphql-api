@@ -33,13 +33,13 @@ const server = new ApolloServer({
   resolvers,
 });
 
-// Apollo Server Middleware
-server.applyMiddleware({ app });
-
 // Express Middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+
+// Apollo Server Middleware
+server.applyMiddleware({ app });
 
 // Run the API
 app.listen(process.env.API_PORT, () => {
