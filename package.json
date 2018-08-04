@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "NODE_ENV=development nodemon app.js"
+  },
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.0.0",
@@ -18,6 +21,7 @@
     "express": "^4.16.3",
     "graphql": "^0.13.2",
     "graphql-import": "^0.6.0",
-    "mongoose": "^5.2.6"
+    "mongoose": "^5.2.6",
+    "nodemon": "^1.18.3"
   }
 }
