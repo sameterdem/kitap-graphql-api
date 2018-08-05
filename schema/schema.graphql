@@ -16,9 +16,9 @@ type Mutation {
 
   updateUser(
     id: ID!
-    firstName: String
-    lastName: String
-    email: String
+    firstName: String!
+    lastName: String!
+    email: String!
     phone: String
     password: String
   ): User
@@ -36,15 +36,40 @@ type Mutation {
 
   updateChild(
     id: ID!
-    firstName: String
-    lastName: String
-    birthDay: Int
-    birthYear: Int
-    gender: Int
+    firstName: String!
+    lastName: String!
+    birthDay: Int!
+    birthYear: Int!
+    gender: Int!
     childInfo: String
   ): Child
 
   deleteChild(id: ID!): Child
+
+  # Address Mutation
+  createAddress(
+    userId: ID!
+    addressName: String!
+    addressType: String!
+    companyName: String
+    companyTax: String
+    address: String!
+    province: String!
+    county: String!
+  ): Address
+
+  updateAddress(
+    id: ID!
+    addressName: String!
+    addressType: String!
+    companyName: String
+    companyTax: String
+    address: String!
+    province: String!
+    county: String!
+  ): Address
+
+  deleteAddress(id: ID!): Address
 }
 
 # User Type
@@ -71,4 +96,17 @@ type Child {
   birthYear: Int!
   gender: Int!
   childInfo: String
+}
+
+# Address Type
+type Address {
+  id: ID!
+  userId: ID!
+  addressName: String!
+  addressType: String!
+  companyName: String
+  companyTax: String
+  address: String!
+  province: String!
+  county: String!
 }

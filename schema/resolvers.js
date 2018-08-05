@@ -1,9 +1,9 @@
 const bcrypt = require('bcrypt');
-const mongoose = require('mongoose');
 
 // Models
 const UserModel = require('../models/User');
 const ChildModel = require('../models/Child');
+const AddressModel = require('../models/Address');
 
 const Query = {
   hello: () => 'Hello World!',
@@ -63,6 +63,29 @@ const Mutation = {
   // Delete Child
   deleteChild: (parent, { id }) => {
     return ChildModel.findByIdAndRemove(id)
+      .then(result => result)
+      .catch(err => err);
+  },
+
+  // Create Address
+  createAddress: (parent, input) => {
+    const child = new AddressModel({ ...input });
+    return child
+      .save()
+      .then(result => result)
+      .catch(err => err);
+  },
+
+  // Update Address
+  updateAddress: (parent, { id, ...input }) => {
+    return AddressModel.findByIdAndUpdate(id, { ...input }, { new: true })
+      .then(result => result)
+      .catch(err => err);
+  },
+
+  // Delete Address
+  deleteAddress: (parent, { id }) => {
+    return AddressModel.findByIdAndRemove(id)
       .then(result => result)
       .catch(err => err);
   },
