@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const { Schema } = mongoose;
 
@@ -18,6 +20,7 @@ const UserSchema = new Schema({
     trim: true,
     required: true,
     unique: true,
+    match: [emailRegex, 'Please enter a valid email address'],
   },
   phone: {
     type: String,
@@ -33,12 +36,15 @@ const UserSchema = new Schema({
   },
   createIp: {
     type: Number,
+    default: null,
   },
   lastLogin: {
     type: Date,
+    default: new Date(),
   },
   lastLoginIp: {
     type: Number,
+    default: null,
   },
 });
 
