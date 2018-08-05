@@ -31,6 +31,11 @@ const resolvers = require('./schema/resolvers.js');
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  playground: {
+    settings: {
+      'editor.theme': 'light',
+    },
+  },
 });
 
 // Express Middlewares
