@@ -2,3 +2,38 @@
 type Query {
   hello: String
 }
+
+# Root Mutation
+type Mutation {
+  # User Mutation
+  createUser(
+    firstName: String!
+    lastName: String!
+    email: String!
+    phone: String
+    password: String!
+  ): User
+
+  updateUser(
+    id: ID!
+    firstName: String
+    lastName: String
+    email: String
+    phone: String
+    password: String
+  ): User
+}
+
+# User Type
+type User {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phone: String
+  password: String!
+  createAt: String
+  createIp: Int
+  lastLogin: String
+  lastLoginIp: Int
+}
