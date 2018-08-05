@@ -22,6 +22,29 @@ type Mutation {
     phone: String
     password: String
   ): User
+
+  # Children Mutation
+  createChild(
+    userId: ID!
+    firstName: String!
+    lastName: String!
+    birthDay: Int!
+    birthYear: Int!
+    gender: Int!
+    childInfo: String
+  ): Child
+
+  updateChild(
+    id: ID!
+    firstName: String
+    lastName: String
+    birthDay: Int
+    birthYear: Int
+    gender: Int
+    childInfo: String
+  ): Child
+
+  deleteChild(id: ID!): Child
 }
 
 # User Type
@@ -36,4 +59,16 @@ type User {
   createIp: Int
   lastLogin: String
   lastLoginIp: Int
+}
+
+# Children Type
+type Child {
+  id: ID!
+  userId: ID!
+  firstName: String!
+  lastName: String!
+  birthDay: Int!
+  birthYear: Int!
+  gender: Int!
+  childInfo: String
 }

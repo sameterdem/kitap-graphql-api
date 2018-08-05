@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const ChildrenSchema = new Schema({
+const ChildSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
     required: true,
@@ -32,4 +32,4 @@ const ChildrenSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('Children', ChildrenSchema);
+module.exports = mongoose.model('Children', ChildSchema);

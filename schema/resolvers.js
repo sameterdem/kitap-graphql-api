@@ -1,6 +1,9 @@
 const bcrypt = require('bcrypt');
+const mongoose = require('mongoose');
+
 // Models
 const UserModel = require('../models/User');
+const ChildModel = require('../models/Child');
 
 const Query = {
   hello: () => 'Hello World!',
@@ -37,6 +40,29 @@ const Mutation = {
       },
       { new: true }
     )
+      .then(result => result)
+      .catch(err => err);
+  },
+
+  // Create Child
+  createChild: (parent, input) => {
+    const child = new ChildModel({ ...input });
+    return child
+      .save()
+      .then(result => result)
+      .catch(err => err);
+  },
+
+  // Update Child
+  updateChild: (parent, { id, ...input }) => {
+    return ChildModel.findByIdAndUpdate(id, { ...input }, { new: true })
+      .then(result => result)
+      .catch(err => err);
+  },
+
+  // Delete Child
+  deleteChild: (parent, { id }) => {
+    return ChildModel.findByIdAndRemove(id)
       .then(result => result)
       .catch(err => err);
   },
