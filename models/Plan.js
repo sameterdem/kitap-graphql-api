@@ -15,6 +15,10 @@ const PlanSchema = new Schema({
     type: String,
     required: true,
   },
+  validityMonth: {
+    type: Number,
+    required: true,
+  },
   planImg: {
     type: String,
     default: null,
