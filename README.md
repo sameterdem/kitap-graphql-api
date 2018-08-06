@@ -1,1 +1,1 @@
-# kutudakitap-api
+# kitap-graphql-api
